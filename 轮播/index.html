@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery支持移动手机的响应式轮播图插件</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+  <link rel="stylesheet" type="text/css" href="css/demo.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="icons/entypo.css">
+</head>
+<body>
+
+<div class="htmleaf-container">
+  <div class="a-container">
+    <div class="a-1_2">
+      <div class='o-sliderContainer hasShadow' id="pbSliderWrap2">
+        <div class='o-slider' id='pbSlider2'>
+          <div class="o-slider--item" data-image="images/3.jpg"></div>
+          <div class="o-slider--item" data-image="images/4.jpg"></div>
+          <div class="o-slider--item" data-image="images/5.jpg"></div>
+          <div class="o-slider--item" data-image="images/1.jpg"></div>
+          <div class="o-slider--item" data-image="images/2.jpg"></div>
+          <div class="o-slider--item" data-image="images/6.jpg"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="aa/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src='js/hammer.min.js'></script>
+<script src='js/slider.js'></script>
+<script>
+
+  $('#pbSlider2').pbTouchSlider({
+    slider_Wrap: '#pbSliderWrap2',
+    slider_Threshold: 25,
+    slider_Speed: 1000,
+    slider_Ease: 'cubic-bezier(.16,.92,0,.8)',
+    slider_Dots: {
+      class: '.slider-pagination',
+      enabled: false
+    },
+    slider_Breakpoints: {
+      default: {
+        height: 300
+      },
+      tablet: {
+        height: 250,
+        media: 1024
+      },
+      smartphone: {
+        height: 200,
+        media: 768
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

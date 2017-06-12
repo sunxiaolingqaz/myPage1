@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>jQuery宽屏满屏焦点图切换特效touchSlider插件</title>
+
+  <link type="text/css" href="css/style.css" rel="stylesheet"/>
+
+  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="js/touchSlider.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      $dragBln = false;
+
+      $(".main_image").touchSlider({
+        flexible : true,
+        speed : 200,
+      });
+
+      $(".main_image").bind("mousedown", function() {
+        $dragBln = false;
+      });
+
+      $(".main_image").bind("dragstart", function() {
+        $dragBln = true;
+      });
+
+      $(".main_image a").click(function(){
+        if($dragBln) {
+          return false;
+        }
+      });
+
+      timer = setInterval(function(){
+        $("#btn_next").click();
+      }, 5000);
+
+      $(".main_visual").hover(function(){
+        clearInterval(timer);
+      },function(){
+        timer = setInterval(function(){
+          $("#btn_next").click();
+        },5000);
+      });
+
+      $(".main_image").bind("touchstart",function(){
+        clearInterval(timer);
+      }).bind("touchend", function(){
+        timer = setInterval(function(){
+          $("#btn_next").click();
+        }, 5000);
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+<div class="main_visual">
+  <div class="main_image">
+    <ul>
+      <li><span class="img_3"></span></li>
+      <li><span class="img_4"></span></li>
+      <li><span class="img_1"></span></li>
+      <li><span class="img_2"></span></li>
+      <li><span class="img_5"></span></li>
+    </ul>
+  </div>
+</div>
+<!--main_visual end-->
+
+</body>
+</html>
